@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wendelyn N. Escudero — Software Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef3f8; --surface:#ffffff; --ink:#14213d; --muted:#4f5d75; --line:#c9d5e4;
+  --accent:#2a55e0; --accent-ink:#ffffff; --mark:#ffd84d; --ok:#17794a;
+  --grid:rgba(20,33,61,.06);
+  --font-head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1626; --surface:#18223a; --ink:#e8eefb; --muted:#9fb0cf; --line:#2b3a5c;
+    --accent:#7d9cff; --accent-ink:#0f1626; --mark:#d9b928; --ok:#5fd39a; --grid:rgba(232,238,251,.05);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1626; --surface:#18223a; --ink:#e8eefb; --muted:#9fb0cf; --line:#2b3a5c;
+  --accent:#7d9cff; --accent-ink:#0f1626; --mark:#d9b928; --ok:#5fd39a; --grid:rgba(232,238,251,.05);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{
+  background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--font-body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--font-head);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:1.5rem}
+section{padding:3.5rem 0}
+.mark{background:linear-gradient(transparent 58%,var(--mark) 58%)}
+
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;flex-wrap:wrap}
+.logo{font:800 1.2rem var(--font-head);text-decoration:none;color:var(--ink)}
+.nav-links{display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
+.nav-links a:hover{color:var(--accent)}
+.icon-btn{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem;font:inherit;font-size:.85rem;cursor:pointer}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:center;padding:2.5rem 0 3.5rem}
+.hero h1{font-size:clamp(2.4rem,7vw,4.4rem);font-weight:800;margin-bottom:1rem}
+.hero .role{font:500 1.15rem var(--font-head);color:var(--accent);margin-bottom:1rem}
+.hero p{color:var(--muted);max-width:52ch;margin-bottom:1.5rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.7rem 1.3rem;border-radius:10px;font-weight:500;text-decoration:none;border:2px solid var(--accent)}
+.btn.ghost{background:transparent;color:var(--accent);margin-left:.5rem}
+.btn:hover{transform:translateY(-2px)}
+
+/* live login card (from the wenwen project) */
+.demo{background:linear-gradient(135deg,#2a55e0,#7b4fe0 60%,#e04f8f);border-radius:20px;padding:1.6rem;position:relative}
+.demo-tag{position:absolute;top:-.8rem;left:1rem;background:var(--mark);color:#14213d;font-size:.78rem;font-weight:500;padding:.2rem .7rem;border-radius:999px}
+.login{background:rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.4);border-radius:16px;padding:1.5rem;color:#fff}
+.login h3{font-size:1.6rem;text-align:center;margin-bottom:1rem}
+.login label{display:block;font-size:.85rem;margin-bottom:.2rem}
+.login input{width:100%;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:.6rem 1rem;color:#fff;font:inherit;margin-bottom:.8rem}
+.login input::placeholder{color:rgba(255,255,255,.75)}
+.login input:focus{outline:3px solid #fff;outline-offset:2px;background:rgba(255,255,255,.28)}
+.login button{width:100%;border:0;border-radius:999px;padding:.65rem;font:500 1rem var(--font-body);background:#fff;color:#2a2f6e;cursor:pointer}
+.login button:hover{background:#ffe9a8}
+#login-msg{min-height:1.4rem;margin-top:.7rem;font-size:.9rem;text-align:center}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.about p{color:var(--muted);margin-bottom:1rem}
+.values{list-style:none;padding:0;display:grid;gap:.8rem}
+.values li{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:8px;padding:.8rem 1rem}
+.values strong{font-family:var(--font-head)}
+
+/* skills */
+.note{color:var(--muted);font-size:.92rem;margin:-.8rem 0 1.2rem;max-width:70ch}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.tab{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.4rem 1rem;font:inherit;font-size:.9rem;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;min-height:3rem}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.45rem .9rem;font-weight:500}
+.verified{display:inline-block;margin-left:.4rem;color:var(--ok);font-size:.8rem}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.3rem;display:flex;flex-direction:column;gap:.6rem}
+.card h3{font-size:1.25rem}
+.card p{color:var(--muted);font-size:.95rem}
+.card .meta{font-size:.85rem;color:var(--muted)}
+.badge{align-self:flex-start;font-size:.78rem;font-weight:500;padding:.15rem .65rem;border-radius:999px;border:1px solid var(--line)}
+.badge.live{color:var(--ok);border-color:var(--ok)}
+.card.live{border-color:var(--accent);border-width:2px}
+.card a{font-weight:500}
+
+/* learning + mindset */
+.learn{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem;list-style:none;padding:0}
+.learn li{background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:.8rem 1rem}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem;max-width:760px;color:var(--muted)}
+
+/* contact + footer */
+.contact{display:flex;gap:1rem;flex-wrap:wrap}
+.contact a{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.8rem 1.2rem;text-decoration:none;font-weight:500}
+.contact a:hover{border-color:var(--accent)}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);margin-top:2rem}
+
+/* one entrance moment: hero */
+.hero>*{animation:rise .7s ease both}
+.hero>*:nth-child(2){animation-delay:.15s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+@media (max-width:760px){
+  .hero,.about{grid-template-columns:1fr}
+  section{padding:2.5rem 0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Main">
+    <a class="logo" href="#top">wendelyn.dev</a>
+    <div class="nav-links">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#learning">Learning</a><a href="#contact">Contact</a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode">Theme</button>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>Wendelyn N. <span class="mark">Escudero</span></h1>
+      <p class="role">Fresh BSIT graduate, aspiring software engineer</p>
+      <p>I learn by building, improve through practice, and keep troubleshooting until things work. This portfolio shows real progress, not polished claims.</p>
+      <a class="btn" href="#projects">See my projects</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="demo" aria-label="Live demo of my login page project">
+      <span class="demo-tag">Try it: my login page</span>
+      <form class="login" id="login" novalidate>
+        <h3>Login</h3>
+        <label for="user">Username</label>
+        <input id="user" type="text" placeholder="Enter a username" autocomplete="off">
+        <label for="pass">Password</label>
+        <input id="pass" type="password" placeholder="At least 6 characters" autocomplete="off">
+        <button type="submit">Log in</button>
+        <p id="login-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About me</h2>
+    <div class="about">
+      <div>
+        <p>I'm a recent Bachelor of Science in Information Technology graduate building my foundation as a software engineer.</p>
+        <p>Right now I'm strengthening my programming fundamentals, building practical projects, and growing a portfolio where every project is something I wrote, debugged, and learned from.</p>
+      </div>
+      <ul class="values">
+        <li><strong>Perseverance.</strong> I read error messages until they make sense.</li>
+        <li><strong>Continuous learning.</strong> I rewrite things when I find a better way.</li>
+        <li><strong>Patience.</strong> I stay with a bug until it's fixed.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technologies I've worked with</h2>
+    <p class="note">From coursework, academic projects, and personal practice. This shows exposure and growing familiarity, not mastery.</p>
+    <div class="tabs" id="skill-tabs" role="group" aria-label="Filter skills"></div>
+    <div class="chips" id="chips" aria-live="polite"></div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="tabs" id="proj-tabs" role="group" aria-label="Filter projects"></div>
+    <div class="grid" id="projects-grid"></div>
+  </section>
+
+  <section id="learning">
+    <h2>Currently learning</h2>
+    <ul class="learn" id="learn"></ul>
+  </section>
+
+  <section id="mindset">
+    <h2>Developer mindset</h2>
+    <p class="quote">I'm at the start of this journey. I write code that breaks, I read error messages until they make sense, and I rewrite things when I learn better ways. Progress isn't linear: some days the solution clicks right away, other days I stare at the same bug for hours. Both are part of learning, and I'm building the habit of showing up and coming back better prepared tomorrow.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <a href="https://github.com/EscuderoWen21" target="_blank" rel="noopener">GitHub: EscuderoWen21</a>
+      <a href="mailto:wendelyn_escudero@sjp2cd.edu.ph">wendelyn_escudero@sjp2cd.edu.ph</a>
+    </div>
+  </section>
+
+  <footer>&copy; <span id="year"></span> Wendelyn N. Escudero. Built with HTML, CSS, and JavaScript.</footer>
+</div>
+
+<script>
+/* ---------- Data ---------- */
+const SKILLS = {
+  "Languages": ["C++", "C#", "Java", "PHP"],
+  "Web & Markup": ["HTML", "CSS", "JavaScript"],
+  "Tools & Platforms": ["Git & GitHub", "Visual Studio", "Visual Studio Code", "NetBeans", "Microsoft Office"],
+  "Design": ["Figma", "Canva"]
+};
+const VERIFIED = ["HTML", "CSS"]; // confirmed in public repositories
+
+const PROJECTS = [
+  { name: "wenwen", type: "Web UI", status: "live",
+    desc: "A responsive login form built with semantic HTML and modern CSS (Flexbox, backdrop-filter, custom properties) and Boxicons. Covers form structure, input styling, hover and focus states, and a glassmorphism card.",
+    tech: "HTML, CSS, Boxicons", url: "https://github.com/EscuderoWen21/wenwen" },
+  { name: "F1 POS", type: "Development", status: "soon",
+    desc: "A point-of-sale system from my BSIT coursework. Technical details and source code will be added once the repository is published." },
+  { name: "Enrollment System", type: "Development", status: "soon",
+    desc: "An academic enrollment application. Technical details and source code will be added once the repository is published." },
+  { name: "Friendly Study", type: "UI/UX", status: "soon",
+    desc: "A student-focused study tool concept. Screens and prototype links will be added when available." },
+  { name: "MovieBox", type: "UI/UX", status: "soon",
+    desc: "A media browsing app concept. Screens and prototype links will be added when available." },
+  { name: "CornHub", type: "UI/UX", status: "soon",
+    desc: "An academic design project. Deliverables and tools will be added when available." }
+];
+
+const LEARNING = [
+  "Programming fundamentals and problem-solving",
+  "Web development (HTML, CSS, JavaScript)",
+  "Git and GitHub workflow: commits, branches, pull requests",
+  "Writing clean, maintainable code",
+  "Project documentation and README practices",
+  "Software engineering basics: version control, testing, project structure"
+];
+
+/* ---------- Helpers ---------- */
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, text) => {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
+};
+function makeTabs(container, labels, onSelect) {
+  labels.forEach((label, i) => {
+    const b = el("button", "tab", label);
+    b.type = "button";
+    b.setAttribute("aria-pressed", i === 0);
+    b.addEventListener("click", () => {
+      container.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-pressed", t === b));
+      onSelect(label);
+    });
+    container.appendChild(b);
+  });
+  onSelect(labels[0]);
+}
+
+/* ---------- Skills ---------- */
+function renderSkills(cat) {
+  const box = $("chips");
+  box.replaceChildren();
+  const list = cat === "All" ? Object.values(SKILLS).flat() : SKILLS[cat];
+  list.forEach(s => {
+    const c = el("span", "chip", s);
+    if (VERIFIED.includes(s)) c.appendChild(el("span", "verified", "✓ in my repo"));
+    box.appendChild(c);
+  });
+}
+makeTabs($("skill-tabs"), ["All", ...Object.keys(SKILLS)], renderSkills);
+
+/* ---------- Projects ---------- */
+function renderProjects(filter) {
+  const grid = $("projects-grid");
+  grid.replaceChildren();
+  PROJECTS.filter(p => filter === "All" || p.type === filter).forEach(p => {
+    const card = el("article", "card" + (p.status === "live" ? " live" : ""));
+    card.appendChild(el("span", "badge" + (p.status === "live" ? " live" : ""),
+      p.status === "live" ? "Published" : "Details coming soon"));
+    card.appendChild(el("h3", "", p.name));
+    card.appendChild(el("p", "", p.desc));
+    card.appendChild(el("p", "meta", p.tech ? "Tech: " + p.tech : "Type: " + p.type));
+    if (p.url) {
+      const a = el("a", "", "View on GitHub");
+      a.href = p.url; a.target = "_blank"; a.rel = "noopener";
+      card.appendChild(a);
+    }
+    grid.appendChild(card);
+  });
+}
+makeTabs($("proj-tabs"), ["All", "Web UI", "Development", "UI/UX"], renderProjects);
+
+/* ---------- Learning ---------- */
+LEARNING.forEach(t => $("learn").appendChild(el("li", "", t)));
+
+/* ---------- Login demo ---------- */
+$("login").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const user = $("user").value.trim(), pass = $("pass").value;
+  const msg = $("login-msg");
+  if (!user) msg.textContent = "Enter a username to continue.";
+  else if (pass.length < 6) msg.textContent = "Password needs at least 6 characters.";
+  else msg.textContent = "Looks good, " + user + "! (Demo only, nothing is sent.)";
+});
+
+/* ---------- Theme toggle ---------- */
+const root = document.documentElement;
+try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
+$("theme").addEventListener("click", () => {
+  const dark = root.dataset.theme
+    ? root.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+});
+
+$("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
